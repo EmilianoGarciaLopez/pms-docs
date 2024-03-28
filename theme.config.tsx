@@ -32,7 +32,11 @@ const config: DocsThemeConfig = {
       <meta name="theme-color" content="#ffffff" />
     </>
   ),
-
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s'
+    }
+  },
 
   footer: {
     text: `© Paisley Microsystems ${currentDate.getFullYear()
