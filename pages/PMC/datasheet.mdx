@@ -1,0 +1,215 @@
+---
+title: PMC-C-CMX Datasheet
+
+subtitle: Paisley Microsystems Control Series Controller Platform for Pi Compute Modules
+---
+
+# PMC-C-CMX Datasheet
+
+{/* ![Render Image](/corner-render.png) */}
+![Main Render Image](/isometric-render.png)
+
+Rapidly configurable and deployable system controllers for CM4/5, featuring full HSIO breakouts, STM32H7 for real-time control, B/M key PCIe Gen 3 compatibility and full compatibility with all PMC functional modules.
+
+Advantageous implementation features include:
+
+- Minimal electronic configuration needed for nearly any application
+- Logically ordered and labeled IO/management pins
+- Standardized DIN rail compatible form factor
+
+### General Specification
+
+|                              |              |     |
+| ---------------------------- | ------------ | --- |
+| Dimension                    | 190.5 x 72.0 | mm  |
+| Underside/top min. clearance | -5.8, +22.0  | mm  |
+
+### Compute Module
+
+|                             |                  |             |
+| --------------------------- | ---------------- | ----------- |
+| HDMI(R)                     | 2 x              | 4k60p 1.4b  |
+| MIPI CSI/DSI                | 2 x 2            | 3/5 Lane    |
+| Native USB                  | 4 or 3 or 1\*    | 480Mbps 2.0 |
+| PCIe support                | 8GT/s PCIe 3.0   |             |
+| PCIe NGFF card form factors | M- 30 x 30/42/80 | mm          |
+
+### General IO
+
+|                            |                                   |
+| -------------------------- | --------------------------------- |
+| Cellular Capability        | Yes, with Nano-SIM and B-key Card |
+| Ethernet                   | 1000-T                            |
+| Conforms to RPi HAT spec   | Yes                               |
+| Conforms to RPi 40P header | Yes                               |
+| Max. Pin-Pin Crosstalk     | 0.25V [PASS]**\***                |
+
+### RS-485 USART transceiver
+
+|                     |             |       |
+| ------------------- | ----------- | ----- |
+| RS-485              | 20          | Mbps  |
+| Transciever IO      | 12/13       | TX/RX |
+| PROFIBUS-DP capable | Yes**\*\*** |       |
+
+### ESD protection
+
+|         |                            |
+| ------- | -------------------------- |
+| HDMI(R) | Yes, IEC 61000-4-2 Level 4 |
+| USB     |                            |
+
+### CM Real Time Clock
+
+|                             |              |
+| --------------------------- | ------------ |
+| RTC Chip                    | PCF85063AT   |
+| Crystal Tolerance/Drift     | -6.666666667 |
+| Wake-on-alarm and interrupt | Yes          |
+
+### Real Time Controller STM32H7B0
+
+#### General Information
+
+|             |             |           |
+| ----------- | ----------- | --------- |
+| Flash Size  | 128k/1.4M   | flash/RAM |
+| Flash Size  | 128k/1.4M   | flash/RAM |
+| Core Clock  | 280         | MHz, max  |
+| Ext. Clocks | 16 + 32.768 | MHz, KHz  |
+| OTA flash   | Yes\*\*\*   |           |
+
+#### GPIO
+
+|                                    |                            |
+| ---------------------------------- | -------------------------- |
+| User GPIOs                         | 4x16 + 1x8 \[58 total\]    |
+| ESD tolerance                      | IEC 61000-4-2 +-25kv       |
+| Max. Pin-Pin Crosstalk             | 0.35V \[PASS\]**\***       |
+| Dedicated SWD/ST-LINK(R) interface | Yes (connected to PA13/14) |
+
+### Power Inputs
+
+#### Wire/Line-Pressing terminal input
+
+|                          |         |     |
+| ------------------------ | ------- | --- |
+| Voltage range            | 7-55/10 | VDC |
+| Current Max.             | 10      | ADC |
+| Reverse Polarity protect | Yes     |     |
+
+#### USBC-PD R2.0 input
+
+|                        |               |     |
+| ---------------------- | ------------- | --- |
+| Valid VBUS Voltages    | 44089         | V   |
+| Valid PD Powers        | 21+/27+/45+   | W   |
+| User-programmable PDOs | Yes**\*\*\*** |     |
+
+#### Power draw
+
+|                                       |             |     |
+| ------------------------------------- | ----------- | --- |
+| Quiescent draw without compute module | 560 +-20    | mW  |
+| Quiescent draw with compute module    | 2200 +-50   | mW  |
+| Short-circuit tolerance               | Yes\*\*\*\* |     |
+
+### Onboard Power Converters
+
+|                        |             |                |
+| ---------------------- | ----------- | -------------- |
+| 5V bus total current   | 5           | ADC            |
+| Input-5V efficiency    | 85-92       | %@ 2.5A, 48VIN |
+| 5V maximum ripple      | 30          | mV (CCM only)  |
+| 3V3 bus total current  | 5           | ADC            |
+| Input-3V3 efficiency   | 82-90       | %@ 2.5A, 48VIN |
+| 5V maximum ripple      | 20          | mV (CCM only)  |
+| 5V GPIO current limit  | Unregulated |                |
+| 3V3 GPIO current limit | 1.5         | ADC            |
+
+### LSI Configuration and Pin Table
+
+```mermaid
+graph TD
+subgraph Pinout
+subgraph Top Row
+P1("1 VIN 6A")
+P2("2 VIN")
+P3("3 SPI CS4")
+P4("4 SPI CS2")
+P5("5 3V3 2A")
+P6("6 G8")
+P7("7 G6")
+P8("8 G4")
+P9("9 G2")
+P10("10 I2C SDA")
+P11("11 SPI CLK")
+P12("12 SPI MISO")
+P13("13 GND")
+end
+subgraph Bottom Row
+P14("14 GND")
+P15("15 GND")
+P16("16 SPI CS3")
+P17("17 SPI CS1")
+P18("18 5V 2A")
+P19("19 G7")
+P20("20 G5")
+P21("21 G3")
+P22("22 G1")
+P23("23 I2C SCL")
+P24("24 SPI MOSI")
+P25("25 GND")
+end
+end
+P1 --- P14
+P2 --- P15
+P3 --- P16
+P4 --- P17
+P5 --- P18
+P6 --- P19
+P7 --- P20
+P8 --- P21
+P9 --- P22
+P10 --- P23
+P11 --- P24
+P12 --- P25
+P13 -.-> P14
+```
+
+|                   |            |           |              |
+| ----------------- | ---------- | --------- | ------------ |
+| CM 4/5            | Definition | CM GPIO   | STM32H7 GPIO |
+| ↔                 | UART TX+   | 14        | PA3          |
+| STM32H7           | RX+        | 15        | PA2          |
+| ↔                 | SPI MISO+  | 9         | PC1          |
+| CM 4/5            | MOSI+      | 10        | PC2          |
+| 5                 | CLK        | 11        | PB10         |
+| 6                 | CS         | Undefined | Undefined    |
+| 7                 | SPI MISO   |           |              |
+| \[24, 25, 26, 27] | MOSI       |           |              |
+| 11                | CLK        |           |              |
+| Undefined         | CS \[0-3]  |           |              |
+| Undefined         | I²2C SDA   |           |              |
+|                   | SCL        |           |              |
+
+The PMC-C-CMX controller is designed and tested to ensure reliable function on the fastest interchip and system data rates.
+
+|                            |     |      |
+| -------------------------- | --- | ---- |
+| UART/SPI max speed         | 24  | Mbps |
+| I2C max speed              | 2   | Mbps |
+| UART/SPI maximum rise-time | 9.3 | ns   |
+| I²2C maximum rise-time     | 132 | ns   |
+
+### Disclaimers
+
+\*4 USB A ports or 3 USB A ports with populated PCIe B card, or 1 USB-C 2.0 port as master or slave (for EEPROM flash)
+
+** BCM2711 has internal 2.5kV HBM GPIO ESD tolerance \*** OTA capable through UART with supplied program running on compute module, or SWD through additional SKU \*\*\*\* Suitable for live/hot development as 3V3 GPIO to GND does not cause compute module or STM32H7 reboot.
+
+\*\*\*\*\* PASS status is given to the crosstalk spec if the maximum measured induced crosstalk does not exceed 1/2 logic low
+
+**\*\*** Full electronic compliance with PROFIBUS-DP, standardized common connectors available with additional SKUs
+
+**\*\*\*** Programming and MCU interface exposed through onboard 8-pin header

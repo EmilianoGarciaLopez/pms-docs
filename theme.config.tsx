@@ -1,17 +1,26 @@
-import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 
+import { Logo } from './components/logo'
+
+let currentDate = new Date()
+
+
+
 const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
-  project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
+  logo: <Logo />,
+  // project: {
+  //   link: 'https://paisleymicrosystems.com',
+  // },
+  // chat: {
+  //   link: 'https://discord.com',
+  // },
+  docsRepositoryBase: 'https://github.com/EmilianoGarciaLopez/pms-docs',
+  feedback: {
+    content: null,
   },
-  chat: {
-    link: 'https://discord.com',
-  },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
   footer: {
-    text: 'Nextra Docs Template',
+    text: `© Paisley Microsystems ${currentDate.getFullYear()
+      }`,
   },
 }
 

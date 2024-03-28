@@ -1,0 +1,11 @@
+/* Target all rows within the table */
+table tr {
+  /* Set the display to none by default, hiding all rows */
+  display: none;
+}
+
+/* Target rows that have a cell with content */
+table tr:has(td:not(:empty)) {
+  /* Set the display to table-row for rows with non-empty cells, making them visible */
+  display: table-row;
+}
