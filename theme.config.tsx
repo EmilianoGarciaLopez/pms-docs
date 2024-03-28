@@ -20,9 +20,9 @@ const config: DocsThemeConfig = {
   },
   head: (
     <>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="PMS Docs" />
-      <meta property="og:description" content="Documentation for PMS products, including PMC-C-CMX" />
+      <meta property="og:image" content="/og-image.png" />
+      <meta property="og:description" content="Documentation for Paisley Microsystems products, including PMC-C-CMX" />
     </>
   ),
 
