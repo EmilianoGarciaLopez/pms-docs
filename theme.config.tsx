@@ -37,10 +37,6 @@ const config: DocsThemeConfig = {
       titleTemplate: '%s'
     }
   },
-  primaryHue: 220,
-  nextThemes: {
-    defaultTheme: 'dark',
-  },
 
   footer: {
     text: `© Paisley Microsystems ${currentDate.getFullYear()
