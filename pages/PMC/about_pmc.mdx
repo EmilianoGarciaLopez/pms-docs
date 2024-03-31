@@ -1,0 +1,105 @@
+---
+title: About PMC-CMX
+subtitle: About our first embedded product, the PMC-C-CMX carrier board
+---
+
+## Compute Module
+
+The PMC-C-CMX features a Raspberry Pi Compute Module 4 or 5 (CM4/CM5). Key features include:
+
+- 2x HDMI 4k60p 1.4b
+- 2x2 MIPI CSI/DSI (3/5 Lane)
+- 4, 3 or 1 native USB 2.0 ports\*
+- PCIe 3.0 8GT/s support
+- M.2 B-Key and M-Key form factor support (30x30/42/80mm)
+
+### Flashing the OS
+
+The CM4/5 can be flashed with an operating system in multiple ways:
+
+#### USB flashing
+
+Connect the board via USB and use the Raspberry Pi usbboot utility to flash the eMMC.
+
+#### Preloading with SD card (non-CM4Lite only)
+
+For full CM4 modules with SD card support, you can preload the OS image onto a microSD card. Insert it into the module before powering on.
+
+### Using M.2 PCIe devices
+
+The PMC-C-CMX M.2 slot supports NVMe SSDs for additional storage. The Samsung 990 EVO has been confirmed as bootable. Cellular modems with a nano-SIM slot are also supported in the B-key slot.
+
+#### Configuring cellular support
+
+Cellular modem functionality can be configured in the host operating system running on the CM4/5. Consult the modem manufacturer's documentation for setup instructions.
+
+### GPIO mapping and using HATs
+
+The PMC-C-CMX breaks out the CM4/5's GPIO to a 40-pin header compatible with the Raspberry Pi HAT specification. Refer to the provided GPIO mapping table for pins used by onboard functionality. Unused GPIOs can interface with custom or off-the-shelf HATs.
+
+### Video interfaces
+
+Dual HDMI and 4-lane MIPI DSI allow connection of up to two 4k60 displays or high resolution MIPI displays. The 2-lane MIPI CSI interfaces enable use of compatible cameras.
+
+### Real-time clock
+
+An onboard PCF85063AT RTC chip with crystal maintains date/time when the system is powered off. It supports wake-on-alarm and interrupt functionality.
+
+### RS-485 Profibus-DP compatible transceiver
+
+The high-speed RS-485 transceiver supports speeds up to 20Mbps, suitable for PROFIBUS-DP industrial networks. TX/RX are on GPIOs 12/13.
+
+## STM32H7 controller
+
+An onboard STM32H7B0 microcontroller enables real-time IO control and offloads the CM4/5. It features:
+
+- 128KB flash / 1.4MB RAM
+- 280MHz max clock speed
+- 16MHz and 32.768kHz crystals
+- 58 total GPIOs (4x16 + 1x8)
+
+### Flashing firmware
+
+#### Using the SWD header
+
+An 8-pin header exposes the STM32's SWD interface for flashing and debugging using an ST-LINK or compatible probe.
+
+#### Using the UART bootloader (OTA)
+
+The STM32 supports flashing over its UART interface. A bootloader program running on the CM4/5 can send the firmware image.
+
+### GPIO mapping
+
+Refer to the STM32H7 GPIO table for pinout. All GPIOs are tolerant to 25kV ESD per IEC 61000-4-2.
+
+## Power input
+
+The PMC-C-CMX can be powered through the terminal block or USB-C PD input.
+
+### Wire/Terminal input
+
+- 7-55V input range (10A max)
+- Reverse polarity protection
+
+### USBC PD input
+
+- Supports USB PD 2.0 with up to 45W power profiles
+- User-programmable power delivery profiles\*\*\*
+
+#### Flashing the STUSB NVMe
+
+The NVMe parameters can be configured by flashing the STUSB controller through its programming header.
+
+## PMC modular bus
+
+The PMC modular bus allows connection of PMC IO modules for additional functionality.
+
+### SPI control
+
+SPI control signals (CS, CLK, MISO, MOSI) allow high-speed communication with PMC modules at up to 24Mbps.
+
+### I^2C control
+
+#### GPIO expander
+
+An I2C GPIO expander allows control of module-specific functions. The interface supports 2Mbps speed.
