@@ -14,7 +14,7 @@ const config: DocsThemeConfig = {
   // chat: {
   //   link: 'https://discord.com',
   // },
-  docsRepositoryBase: 'https://github.com/EmilianoGarciaLopez/pms-docs',
+  docsRepositoryBase: 'https://github.com/EmilianoGarciaLopez/pms-docs/blob/main/',
   feedback: {
     content: null,
   },
