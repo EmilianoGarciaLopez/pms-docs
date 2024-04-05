@@ -7,9 +7,18 @@ subtitle: Application documentation and guidance for PMC-C-CMX Pi control board,
 
 ![PMC-C-CMX](/images/pmc/pmc-c-cmx_frontunprofessional.jpg)
 
+## Overview
+
+
 ## Powering the controller
 
 The PMC-C-CMX can be powered through the terminal block or USB-C PD input.
+
+**Definitions used**
+
+INPUT bus: The common high-voltage power bus containing the input voltage, which feeds the converter system and branches on the modular bus.
+VBUS/USB voltage: The voltage presented by the USD-PD source, may or may not be connected to INPUT bus
+
 
 ### Wire/Terminal input
 
@@ -37,7 +46,7 @@ Below are recommended power supply ratings for minimum, and fully-loaded configu
 - Supports USB PD 2.0 with up to 45W power profiles
 - User-programmable power delivery profiles\*\*\*
 
-The PMC-C-CMX includes a USB-PD 2.1 sink controller, the STUSB4500 by STMicroelectronics. Conforming to the USB-PD 2.1 standard, it allows the entire controller system to be powered by a capable PD charger at up to 100W (20V@5A). A bidirectional current switch capable of blocking the maximun INPUT bus voltage of 60V is controlled by the STUSB chip. 
+The PMC-C-CMX includes a USB-PD 2.1 sink controller, the STUSB4500 by STMicroelectronics. Conforming to the USB-PD 2.1 standard, it allows the entire controller system to be powered by a capable PD charger at up to 100W (20V@5A). A bidirectional current switch capable of blocking the maximum INPUT bus voltage of 60V is controlled by the STUSB chip. 
 
 The controller is shipped with a solder-bridge shorted, connecting the VBUS output directly to INPUT bus. It is provided in the case that separate INPUT bus and USB-PD inputs are desired. Otherwise, it is OK to leave the jumper bridged under any power configuration. The voltage on INPUT bus will simply be the higher of the USB-PD voltage or the terminal input voltage. See the below section on dual inputs for more information.
 
@@ -53,7 +62,7 @@ The STUSB4500 is pre-flashed with registers set for a PD configuration that will
 
 (PDO 1 is 5V, and cannot be changed)
 
-The order the PDOs are listed is also the precedence of the PD negotiation. STUSB will request PDO3 first, and if available will take PDO3. If using a 20V-capable charger but a lower bus voltage is desired (15V, 9V), the NVMe must be reflashed.
+The order the PDOs are listed is also the precedence of the PD negotiation. STUSB will request PDO3 first, and if available will take PDO3. If using a 20V-capable charger but a lower bus voltage is desired (15V, 9V), the NVM must be reflashed.
 
 As the minimum system INPUT bus voltage is 7V, the 5V PDO on the chip is disabled on the configuration it is shipped with. 
 
@@ -162,3 +171,5 @@ SPI control signals (CS, CLK, MISO, MOSI) allow high-speed communication with PM
 #### GPIO expander
 
 An I2C GPIO expander allows control of module-specific functions. The interface supports 2Mbps speed.
+
+## Common questions
