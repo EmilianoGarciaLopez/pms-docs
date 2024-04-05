@@ -16,14 +16,18 @@ The PMC-C-CMX allows a wire to be inserted into a press-fit terminal block witho
 
 #### Minimum power requirements
 
-The onboard converters can reliably function at as little as 7V and the CM4 TDP at full load is not to exceed 15 watts. A minimum power requirement of 7V@2.5A is derived. This does not account for peripherals such as USB devices, cameras on the INPUT or 5V/3V3 busses. The latter of which are capped at 30W/18W INPUT bus power draw, respectively. 
+The onboard converters can reliably function at as little as 7V and the CM4 TDP at full load is not to exceed 15 watts. A minimum power requirement of 7V @ 2.5A is derived. This does not account for peripherals such as USB devices, cameras on the INPUT or 5V/3V3 busses. The latter of which are capped at 30W/18W INPUT bus power draw, respectively. 
 
 Below are recommended power supply ratings for minimum, and fully-loaded configurations (additional power draw from the modular bus is not considered)
 
-7V (minimum): 2.5A, 9.5A
-12V: 1.6A, 6A
-24V: 0.7A, 2.8A
-48V: 0.4A, 1.5A
+
+| Input  | Min.  | Full  |
+| ------ | ----- | ----- |
+| 7V     | 2.5A  | 9.5A  |
+| 12V    | 1.6A  | 6.0A  |
+| 24V    | 0.7A  | 2.8A  |
+| 48V    | 0.4A  | 1.5A  |
+
 
 ### USBC PD input
 
@@ -38,9 +42,13 @@ The controller is shipped with a solder-bridge shorted, connecting the VBUS outp
 
 The STUSB4500 is pre-flashed with registers set for a PD configuration that will work out of the box for most users and power supplies. The chip has three Power Delivery Objects (PDOs):
 
-PDO3: Default set to 20V, 1A minimum
-PDO2: Default set to 15V, 1.75A minimum
-PDO1: PDO1 is 5V only, therefore it is disabled.
+| Defaults | VBUS  | Imin   |
+| -------- | ----- | ------ |
+| PDO3     | 20V   | 1.00A  |
+| PDO2     | 15V   | 1.75A  |
+| PDO1     | 5V    | OFF    |
+
+(PDO 1 is 5V, and cannot be changed)
 
 The order the PDOs are listed is also the precedence of the PD negotiation. STUSB will request PDO3 first, and if available will take PDO3. If using a 20V-capable charger but a lower bus voltage is desired (15V, 9V), the NVMe must be reflashed.
 
@@ -54,11 +62,12 @@ The NVM parameters can be configured by flashing the STUSB controller through it
 
 The STUSB4500 can be flashed with the onboard CM4's GPIO, or the onboard STM32H7. However if it is undesirable to change firmware/software deployments a simple external flasher with any AVR platform board such as an Arduino can be used to flash the NVM. A connection diagram and CPP code for flashing the default configuration is given below. Please note that it does require the Softwire library and it's dependancies, found at stevemarple/softwire.
 
-Arduino UNO R3 pins -> PMC-C-CMX USB-PD interface
-GND - > G
-3V3 - > V+
-A4 - > SC
-A5 - > SD
+| Arduino UNO R3 | USB-PD interface |
+| -------------- | ---------------- |
+| GND            | G                |
+| 3V3            | V+               |
+| A4             | SC               |
+| A5             | SD               |
 
 Please note that a 2.2k-10k pullup resistor is required between A4/3V3, and A5/3V3.
 
