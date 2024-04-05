@@ -70,7 +70,8 @@ As the minimum system INPUT bus voltage is 7V, the 5V PDO on the chip is disable
 
 The NVM parameters can be configured by flashing the STUSB controller through its programming header. The pinout is given below:
 
-![STUSB4500 interface pinout](/images/pmc/USB-PDinterface_pindiagram.png)
+
+![STUSB4500 interface pinout](/images/pmc/USB-PDinterface_pindiagram.svg)
 
 The STUSB4500 can be flashed with the onboard CM4's GPIO, or the onboard STM32H7. However if it is undesirable to change firmware/software deployments a simple external flasher with any AVR platform board such as an Arduino can be used to flash the NVM. A connection diagram and CPP code for flashing the default configuration is given below. Please note that it does require the Softwire library and it's dependancies, found at stevemarple/softwire.
 
