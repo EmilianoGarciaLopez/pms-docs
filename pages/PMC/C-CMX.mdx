@@ -7,6 +7,9 @@ subtitle: Application documentation and guidance for PMC-C-CMX Pi control board,
 
 ![PMC-C-CMX](/images/pmc/pmc-c-cmx_frontunprofessional.jpg)
 
+import { Callout } from 'nextra/components'
+The docs are still being updated, please contact us for immediate answers and support.
+
 ## Overview
 
 
@@ -161,7 +164,11 @@ Refer to the STM32H7 GPIO table for pinout. All GPIOs are tolerant to 25kV ESD p
 
 ## PMC modular bus
 
-The PMC modular bus allows connection of PMC IO modules for additional functionality.
+The PMC modular bus allows connection of PMC IO modules for additional functionality. The pinout is given below:
+
+![PMC Modular Bus Pinout](/images/pmc/pmc-modularbus_pinout.png)
+
+All signals are 3.3V logic level, INPUT bus can be from 7-55V.
 
 ### SPI control
 
@@ -173,4 +180,4 @@ SPI control signals (CS, CLK, MISO, MOSI) allow high-speed communication with PM
 
 An I2C GPIO expander allows control of module-specific functions. The interface supports 2Mbps speed.
 
-## Common questions
+
