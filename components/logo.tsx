@@ -1,5 +1,5 @@
 const SvgComponent = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={112} height={28} fill="none">
+    <svg xmlns="http://www.w3.org/2000/svg" width={150} viewBox="0 0 112 28" fill="none">
         <mask
             id="a"
             viewBox="27 26 2 1"

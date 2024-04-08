@@ -1,0 +1,17 @@
+{
+  "overview": {
+    "title": "PMC-C-CMX Overview"
+  },
+  "powering": {
+    "title": "Powering the PMC-C-CMX"
+  },
+  "compute-module": {
+    "title": "Compute Module"
+  },
+  "stm32h7": {
+    "title": "STM32H7 Controller"
+  },
+  "modular-bus": {
+    "title": "PMC Modular Bus"
+  }
+}

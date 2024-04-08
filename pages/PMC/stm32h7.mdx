@@ -1,0 +1,27 @@
+---
+title: STM32H7 Controller
+subtitle: Learn about the onboard STM32H7B0 microcontroller, which enables real-time IO control and offloads the CM4/5. Discover its features, flashing firmware methods, and GPIO mapping.
+---
+
+# STM32H7 controller
+
+An onboard STM32H7B0 microcontroller enables real-time IO control and offloads the CM4/5. It features:
+
+- 128KB flash / 1.4MB RAM
+- 280MHz max clock speed
+- 16MHz and 32.768kHz crystals
+- 58 total GPIOs (4x16 + 1x8)
+
+## Flashing firmware
+
+### Using the SWD header
+
+An 8-pin header exposes the STM32's SWD interface for flashing and debugging using an ST-LINK or compatible probe.
+
+### Using the UART bootloader (OTA)
+
+The STM32 supports flashing over its UART interface. A bootloader program running on the CM4/5 can send the firmware image.
+
+## GPIO mapping
+
+Refer to the STM32H7 GPIO table for pinout. All GPIOs are tolerant to 25kV ESD per IEC 61000-4-2.

@@ -1,11 +1,18 @@
 {
-  "about": {
-    "title": "About",
-    "type": "page"
+  "index": {
+    "title": "About Us"
+  },
+  "PMC": {
+    "title": "PMC-C-CMX"
   },
   "contact": {
     "title": "Contact ↗",
     "type": "page",
     "href": "mailto:contact@paisleymicro.com"
+  },
+  "buy_now": {
+    "title": "View our Products ↗",
+    "type": "page",
+    "href": "paisleymicro.com"
   }
 }
