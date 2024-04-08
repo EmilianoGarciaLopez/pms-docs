@@ -15,12 +15,28 @@ Our debut product, [PMC-C-CMX](/PMC/overview), is a powerful control board desig
 - Flexible [powering options](/PMC/powering) with wire/terminal input and USB-C PD input
 - High-performance [compute module](/PMC/compute-module) with support for NVMe SSDs and cellular modems
 - Real-time control with the onboard [STM32H7 microcontroller](/PMC/stm32h7)
-- Expandable [PMC modular bus](/PMC/modular-bus) for connecting additional IO modules
+- Expandable [PMC modular bus](/PMC/modular-bus) for connecting functional modules for IO, telemetry, and high-speed capabilities
 
 Explore the [PMC-C-CMX](/PMC/overview) section to learn more about this versatile control board and its capabilities.
 
 ## Current Plans
 ![System Overview](/images/pmc/system-overview.svg)
+
+A complete control system suitable for cutting edge applications is composed of what can be split two main stacks: Hardware and Software. The development of such must be harmonious in order to create a functional, elegant and agile system.
+
+### Software stack
+
+Take the case of a system built around the PMC-C-CMX controller, which uses a RPi Compute modules running linux and STM32H7 processor running C or ASM on a HAL library. The main software/firmware components are as follows:
+
+- 1: Logic/control/driving code: This is the most high-level abstracted program, executing functions to orchestrate control on the entire system. Flexibility in languages and runs on the Compute Module.
+- 2: Hardware control middleware: This provides the functions for pin-control and abstraction to the above item #1. It is more accurately descibed as a service package or software library that allows major simplification of #1.
+- 3: Firmware on the STM32H7: The firmware structure of the STM32 real-time controller allows for certain tasks requireing sub-millisecond latency to be delegated to the deterministic controller, keeping the compute system in the loop with updates over UART or SPI. This works in synchrony with the hardware control middleware, as a large part of middleware is the communication protocol management and function control of the STM32.
+
+Of the above items, only the top item number one is typically the focus of the development and operations goals of a company; seeking new ways to orchestrate systems for implementing a complex motion-tracking algorithm in manufacture. Unfortunately however, items 2 and 3 often take a disproportionate share of developers' time. 
+
+Now, Paisley Microsystems has on the roadmap to release a unified environment to programmatically generate software stack items 2 and 3. A minimal device configuration will result in the outputs of a middleware package and an executable to automatically flash and keep updated firmware on the STM32 processor. Users will be able to enjoy the benefits of a simple device control library, simplifying actions such as setting the output registers of a connected device to merely one line of code.
+
+### Hardware stack
 
 ## Contact Us
 
