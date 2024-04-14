@@ -1,0 +1,14 @@
+{
+  "overview": {
+    "title": "PMC-IO-XGP Overview"
+  },
+  "i2c": {
+    "title": "i2c Interfaced IO (IGP)"
+  },
+  "spi": {
+    "title": "SPI Interfaced IO (SGP)"
+  },
+  "guide": {
+    "title": "Implementation Guide"
+  }
+}

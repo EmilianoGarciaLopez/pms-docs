@@ -5,6 +5,9 @@
   "pmc": {
     "title": "PMC-C-CMX"
   },
+  "io": {
+    "title": "PMC-IO-XGP"
+  },
   "contact": {
     "title": "Contact ↗",
     "type": "page",
