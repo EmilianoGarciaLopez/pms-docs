@@ -1,26 +1,42 @@
 
-# Overview of the PMC-C-CMX
+# Overview of the PMC-IO-IGP
 
 
 <div className="nx-hidden">
 ## Overview
 </div>
 
-The PMC-C-CMX is a powerful control board designed for the Raspberry Pi Compute Module 4 or 5 (CM4/CM5). It offers a range of features and capabilities, making it an ideal choice for industrial control applications.
+The PMC-IO-XGP series offer extremely robust and capable general-io (GPIO) inputs and outputs for PMC controller boards. The XGP series are available in two familiar interfaces: i2c and SPI, for which many libraries exist specifically to drive the on-board expander chips. 
 
-Key features include:
-- Flexible powering options
-- High-performance compute module
-- Real-time control with STM32H7
-- Expandable modular bus
-
-Explore the sections below to learn more about each aspect of the PMC-C-CMX controller.
-
-## Images
-
-![PMC-C-CMX](/images/pmc/front.jpg)
+A software library is also currently under development to enable one-line setup for C/C++ and Python programs in which the specific hardware connections are already enumerated into the program.
 
 
+## Specifications
 
-![PMC-C-CMX](/images/pmc/back.jpg)
+Each XGP board has a 2-port 16-pin expander chip. Each "A" bank of 8 pins and 4 pins of each "B" bank are connected to a I/O block. The remaining 4 "B" bank pins are connected to hiogh-power relay outputs.
 
+### I/O Block 
+
+Each board has 12 I/O blocks spread over 2 banks (A-8, B-4). Each bank (A and B) can be configured with the SINK DIP switch to either act as a digital input or an input.
+
+By default, the I/O registers are set to all inputs, same for the DIP switches. These inputs are 55V-tolerant, to the same rating as the INPUT BUS. The logic high threshold is 2.9 volts, making it suitable for 3.3-volt logic.
+
+If a channel is set to be an input, these pins on the IO expander are pulled high. When a voltage higher than the logic high threshold the pin will be pulled low. Therefore a true HIGH reading will be reflected as a LOW register read on the chip.
+
+If a channel is set to be an output, the pullup is removed. Writing a HIGH state to the pin-register will turn on an open-drain conductance path to GROUND. These outputs along with a potential connected to the REF busses provide the versatile digital outputs. Each channel is capable of sink a maximum of 2A and 60V. Please consult the below diagram for safe operating area of the switches.
+
+![Safe Operating Area](/images/io/safeoperatingarea.png)
+
+### REF bus
+
+The REF bus was previously mentioned, and will be elaborated on here. The REFA and REFB busses are simply "dumb" electrical connections presented for a streamlined user experience. Typically one would connect a potential (3.3V, 5V, or anything under 55V) to the REFA or REFB busses and these potentials would be available on every other pin on the output terminal blocks to be used. 
+
+In input mode, the REF bus allows a shorting switch to be simply connected across two adjacent pins of the terminal block. In output mode, REF bus can be used at the positive terminal for loads to be switched. The REF bus copper pours are designed to carry a maximum of 8 amperes each. Below is an example of using the REF bus to provide a logic-level output, driving an LED with an integrated current limit.
+
+![REF Bus Example](/images/io/refbusexample.jpg)
+
+### Relay output
+
+XGP boards come with four high-power relay outputs, connected to "B" bank pins on the expander chip. Each of these outputs are rated for 10 amperes at up to 250 VAC, making these outputs suitable for switching large inductive AC motor loads, or other line-voltage devices.
+
+The physical design of the board is made according to standard specification for creepage, giving 5kV isolation between any high-voltage point and the low-voltage logic/powerlines.

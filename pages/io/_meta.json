@@ -1,6 +1,6 @@
 {
   "overview": {
-    "title": "PMC-IO-XGP Overview"
+    "title": "Overview"
   },
   "i2c": {
     "title": "i2c Interfaced IO (IGP)"
