@@ -6,6 +6,9 @@
 ## Overview
 </div>
 
+import { Callout } from 'nextra/components'
+ 
+
 The PMC-IO-XGP series offer extremely robust and capable general-io (GPIO) inputs and outputs for PMC controller boards. The XGP series are available in two familiar interfaces: i2c and SPI, for which many libraries exist specifically to drive the on-board expander chips. 
 
 A software library is also currently under development to enable one-line setup for C/C++ and Python programs in which the specific hardware connections are already enumerated into the program.
@@ -15,11 +18,21 @@ A software library is also currently under development to enable one-line setup 
 
 Each XGP board has a 2-port 16-pin expander chip. Each "A" bank of 8 pins and 4 pins of each "B" bank are connected to a I/O block. The remaining 4 "B" bank pins are connected to hiogh-power relay outputs.
 
+|            |              |                  |
+| ---------- | ------------ | ---------------- |
+| BANK A     | 8 I/O blocks | --               |
+| BANK B     | 4 I/O blocks | 4 Relay outputs  |
+
 ### I/O Block 
 
 Each board has 12 I/O blocks spread over 2 banks (A-8, B-4). Each bank (A and B) can be configured with the SINK DIP switch to either act as a digital input or an input.
 
+
 By default, the I/O registers are set to all inputs, same for the DIP switches. These inputs are 55V-tolerant, to the same rating as the INPUT BUS. The logic high threshold is 2.9 volts, making it suitable for 3.3-volt logic.
+
+<Callout type="info">
+  The expander chips have options in their registers to set each individual pin bank to an output or input. Both these registers and the DIP switch setting need to be matched in order to correctly function!
+</Callout>
 
 If a channel is set to be an input, these pins on the IO expander are pulled high. When a voltage higher than the logic high threshold the pin will be pulled low. Therefore a true HIGH reading will be reflected as a LOW register read on the chip.
 

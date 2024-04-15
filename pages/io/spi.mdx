@@ -1,22 +1,8 @@
 ---
-title: Modular Bus
-description: Discover the PMC modular bus, which allows connection of PMC IO modules for additional functionality. Learn about the bus pinout, SPI control, and I2C control with the GPIO expander.
+title: SPI-interfaced IO module
+description: Specific information for the SPI-interfaced IO module
 ---
 
-# PMC modular bus
+# SPI-interfaced IO module
 
-The PMC modular bus allows connection of PMC IO modules for additional functionality. The pinout is given below:
-
-![PMC Modular Bus Pinout](/images/pmc/pmc-modularbus-pinout.svg)
-
-All signals are 3.3V logic level, INPUT bus can be from 7-55V.
-
-## SPI control
-
-SPI control signals (CS, CLK, MISO, MOSI) allow high-speed communication with PMC modules at up to 24Mbps.
-
-## I^2C control
-
-### GPIO expander
-
-An I2C GPIO expander allows control of module-specific functions. The interface supports 2Mbps speed.
+The SPI-interfaced varient PMC-IO-SGP uses the [MCP23S17](https://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf) SPI port expander chip. The relevant register tables are found on pages 16 and 17 (sections 3.4-3.5).
