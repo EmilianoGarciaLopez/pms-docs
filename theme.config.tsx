@@ -87,7 +87,7 @@ const config: DocsThemeConfig = {
       </Link>
     ),
   },
-
+  darkMode: false,
   footer: {
     text: `© Paisley Microsystems ${currentDate.getFullYear()}`,
   },
