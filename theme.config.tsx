@@ -78,15 +78,6 @@ const config: DocsThemeConfig = {
       };
     }
   },
-  banner: {
-    key: "PMC-C-CMX Release",
-    text: (
-      <Link href="https://paisleymicro.com/">
-        🎉 Get the <b>world's most advanced CM4/CM5 carrier board</b> for just
-        $149.99 →
-      </Link>
-    ),
-  },
   darkMode: false,
   footer: {
     text: `© Paisley Microsystems ${currentDate.getFullYear()}`,
