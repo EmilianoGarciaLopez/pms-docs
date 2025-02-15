@@ -1,57 +1,13 @@
 ---
-title: Welcome to Paisley Microsystems
-description: Discover Paisley Microsystems' range of control products, starting with the PMC-C-CMX, a powerful control board for the Raspberry Pi Compute Module 4 or 5 (CM4/CM5). Learn about our upcoming products and explore the features of the PMC-C-CMX.
+title: Resources | Paisley Microsystems 
+description: 
 ---
 
-# Welcome to Paisley Microsystems
+# Paisley Microsystems Engineering Resources
 
-At Paisley Microsystems, we're dedicated to providing innovative control solutions for industrial applications. Our range of products combines the flexibility of development boards with the robustness and ease of use of PLCs.
-
-## Introducing the PMC-C-CMX
-![Closeup image of the PMC-C-CMX](/images/pmc/closeup.jpg)
-
-Our debut product, [PMC-C-CMX](/pmc/overview), is a powerful control board designed for the Raspberry Pi Compute Module 4 or 5 (CM4/CM5). It offers a range of features, including:
-
-- Flexible [powering options](/pmc/powering) with wire/terminal input and USB-C PD input
-- High-performance [compute module](/pmc/compute-module) with support for NVMe SSDs and cellular modems
-- Real-time control with the onboard [STM32H7 microcontroller](/pmc/stm32h7)
-- Expandable [PMC modular bus](/pmc/modular-bus) for connecting functional modules for IO, telemetry, and high-speed capabilities
-
-Explore the [PMC-C-CMX](/pmc/overview) section to learn more about this versatile control board and its capabilities.
-
-## Current Plans
-![System Overview](/images/pmc/system-overview.svg)
-
-A complete control system suitable for cutting edge applications is composed of what can be split two main stacks: Hardware and Software. The development of such must be harmonious in order to create a functional, elegant and agile system.
-
-### Software stack
-
-Take the case of a system built around the PMC-C-CMX controller, which uses a RPi Compute modules running linux and STM32H7 processor running C or ASM on a HAL library. The main software/firmware components are as follows:
-
-- 1: Logic/control/driving code: This is the most high-level abstracted program, executing functions to orchestrate control on the entire system. Flexibility in languages and runs on the Compute Module.
-- 2: Hardware control middleware: This provides the functions for pin-control and abstraction to the above item #1. It is more accurately descibed as a service package or software library that allows major simplification of #1.
-- 3: Firmware on the STM32H7: The firmware structure of the STM32 real-time controller allows for certain tasks requireing sub-millisecond latency to be delegated to the deterministic controller, keeping the compute system in the loop with updates over UART or SPI. This works in synchrony with the hardware control middleware, as a large part of middleware is the communication protocol management and function control of the STM32.
-
-Of the above items, only the top item number one is typically the focus of the development and operations goals of a company; seeking new ways to orchestrate systems for implementing a complex motion-tracking algorithm in manufacture. Unfortunately however, items 2 and 3 often take a disproportionate share of developers' time. 
-
-Now, Paisley Microsystems the release of a unified environment to programmatically generate software stack items 2 and 3 on the roadmap. A minimal device configuration will result in the outputs of a middleware package and an executable to automatically flash and keep updated firmware on the STM32 processor. Users will be able to enjoy the benefits of a simple device control library, simplifying actions such as setting the output registers of a connected device to merely one line of code.
-
-### Hardware stack
-
-Paisley Microsystems bridges the divide between costly engineered products such as PLCs or specialty controllers and low-cost but often finicky solutions composed of development boards, or other similar modules wired together on a point-to-point basis. In one way or another, developers often strive to have the following capabilities in a modern system:
-
-- 1: Compute ability: Powerful compute ability is needed to run the latest models that will give your team the resources to create a winning system.
-- 2: High-speed interfaces: Inputs and outputs to a high power processor including computer vision devices, and mass storage.
-- 3: Electrical interfaces: Inputs and outputs to control the actual system: Instrumentation, motors and drives, user interface.
-
-The PMC controller series strikes a deal for system designers and intergrators bringing all three components into one unified, flexible and interoperable product family. Control/compute boards PMC-C also gives a huge advantage by bringing ML-ready high-power compute to systems traditionaly ran with lower-power system management devices. A variety of high-bandwidth options connected through PCIe gives your system motion capture, LIDAR at the highest resolutions or novel connectivity and storage options through M.2 devices. Finally, the moudlar nature of the PMC series and the stardardized mounting scheme allows seamless physical integration of functional modules for nearly any purpose. PMC functional modules can fulfill purposes from precision motor control and hydrualic monitoring and orchestration, to interfacing with CAN/LIN, 4-20mA, and PROFIBUS(RS-485).
 
 
 
 ## Contact Us
 
 If you have any questions or would like to learn more about our products, please don't hesitate to [contact us](mailto:contact@paisleymicro.com).
-
-## View Our Products
-
-To explore our range of control products and make a purchase, visit our [online store](https://paisleymicro.com/).
